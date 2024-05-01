@@ -1,5 +1,6 @@
-package ar.edu.utn.frba.dds.dominio;
+package ar.edu.utn.frba.dds.dominio.viajes;
 
+import ar.edu.utn.frba.dds.dominio.Persona;
 import ar.edu.utn.frba.dds.dominio.adapters.CalculadorDeDistanciaAdapter;
 import ar.edu.utn.frba.dds.dominio.adapters.CalculadorDeTiempoDeDemoraAdapter;
 import ar.edu.utn.frba.dds.dominio.direccion.Direccion;
@@ -18,19 +19,17 @@ import java.util.stream.Collectors;
 @Setter
 public class Trayecto {
     private String nombre;
-    private Direccion direccionInicial;
-    private Direccion direccionFinal;
     private List<Persona> cuidadores;
     private Persona transeunte;
     private Double tiempoDemoraEnMinutos;
-    private Double distancia;
+    private Double distanciaTotal;
     private Boolean finalizado;
     private List<Reaccion> reacciones;
     private LocalDateTime fechaYHoraInicio;
-    private CalculadorDeDistanciaAdapter calculadorDeDistancia;
-    private CalculadorDeTiempoDeDemoraAdapter calculadorDeTiempoDeDemora;
+    private List<Parada> paradas;
+    private Boolean transeunteSeQuedaEnParadas;
 
-    public Trayecto(String deMedranoAlObelisco) {
+    public Trayecto() {
         this.cuidadores = new ArrayList<>();
         this.reacciones = new ArrayList<>();
     }
@@ -48,15 +47,16 @@ public class Trayecto {
     }
 
     public void calcularDistancia() {
-        this.distancia = this.calculadorDeDistancia.calcularDistancia(direccionInicial, direccionFinal);
+        //TODO
     }
 
-    public void calcularDuracion() {
+    public void calcularTiempoDeDemoraEnMinutos() {
+        this.ordenarListaDeParadas();
         //recorrer lista de paradas y actualizar tiempoDeDemoraALaSiguienteParada de cada una
 
         //sumar tiempoDeDemoraALaSiguienteParada + tiempoDeDemoraEnParada de cada una (y hacer el total)
 
-        this.tiempoDemoraEnMinutos = this.calculadorDeTiempoDeDemora.calcularTiempoDeDemora(distancia);
+        //TODO
     }
 
     public void reaccionarPorIncidente() {
@@ -77,5 +77,19 @@ public class Trayecto {
         this.reacciones = this.reacciones.stream()
                 .sorted(Comparator.comparingInt(Reaccion::getNumeroDeOrden))
                 .collect(Collectors.toList());
+    }
+
+    private void ordenarListaDeParadas(){
+        this.paradas = this.paradas.stream()
+                .sorted(Comparator.comparingInt(Parada::getNumeroDeParada))
+                .collect(Collectors.toList());
+    }
+
+    public Trayecto(String nombre, Persona transeunte, List<Reaccion> reacciones, List<Parada> paradas, Boolean transeunteSeQuedaEnParadas) {
+        this.nombre = nombre;
+        this.transeunte = transeunte;
+        this.reacciones = reacciones;
+        this.paradas = paradas;
+        this.transeunteSeQuedaEnParadas = transeunteSeQuedaEnParadas;
     }
 }
