@@ -1,9 +1,6 @@
 package ar.edu.utn.frba.dds.dominio.viajes;
 
 import ar.edu.utn.frba.dds.dominio.Persona;
-import ar.edu.utn.frba.dds.dominio.adapters.CalculadorDeDistanciaAdapter;
-import ar.edu.utn.frba.dds.dominio.adapters.CalculadorDeTiempoDeDemoraAdapter;
-import ar.edu.utn.frba.dds.dominio.direccion.Direccion;
 import ar.edu.utn.frba.dds.dominio.reacciones.Reaccion;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,16 +44,14 @@ public class Trayecto {
     }
 
     public void calcularDistancia() {
-        //TODO
+        this.distanciaTotal = this.paradas.stream()
+                .mapToDouble(Parada::getDistanciaSiguienteParada).sum();
     }
 
     public void calcularTiempoDeDemoraEnMinutos() {
-        this.ordenarListaDeParadas();
-        //recorrer lista de paradas y actualizar tiempoDeDemoraALaSiguienteParada de cada una
 
-        //sumar tiempoDeDemoraALaSiguienteParada + tiempoDeDemoraEnParada de cada una (y hacer el total)
-
-        //TODO
+        this.tiempoDemoraEnMinutos = this.paradas.stream()
+                .mapToDouble(Parada::getTiempoDeDemoraTotalALaSiguienteParada).sum();
     }
 
     public void reaccionarPorIncidente() {
@@ -76,12 +71,6 @@ public class Trayecto {
     private void ordenarListaDeReacciones() {
         this.reacciones = this.reacciones.stream()
                 .sorted(Comparator.comparingInt(Reaccion::getNumeroDeOrden))
-                .collect(Collectors.toList());
-    }
-
-    private void ordenarListaDeParadas(){
-        this.paradas = this.paradas.stream()
-                .sorted(Comparator.comparingInt(Parada::getNumeroDeParada))
                 .collect(Collectors.toList());
     }
 
