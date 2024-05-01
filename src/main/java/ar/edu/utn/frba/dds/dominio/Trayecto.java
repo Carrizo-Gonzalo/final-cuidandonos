@@ -56,17 +56,12 @@ public class Trayecto {
     }
 
     public void reaccionarPorIncidente() {
-        //i++
-        //ordenar lista
 
         this.ordenarListaDeReacciones();
 
-
         if(!this.reacciones.isEmpty()) {
             int tamanioLista = this.reacciones.size();
-
             reacciones.get(0).accionar();
-
             for(int i = 1; i < tamanioLista && reacciones.get(i-1).fallo(); i++) {
                 Reaccion reaccion = this.reacciones.get(i);
                 reaccion.accionar();
