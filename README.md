@@ -1,4 +1,20 @@
-# java-base-project
+# final-cuidandonos
+
+## Integrantes
+
+* Ibarra Martin
+* Carrizo Gonzalo
+
+## Algunas justificaciones (el resto se justifica con el codigo)
+
+* 
+
+
+
+
+
+
+
 
 Esta es una plantilla de proyecto diseñada para: 
 
@@ -12,7 +28,7 @@ Esta es una plantilla de proyecto diseñada para:
 ## Ejecutar tests
 
 
---Testing123
+
 ```
 mvn test
 ```

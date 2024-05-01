@@ -52,6 +52,10 @@ public class Trayecto {
     }
 
     public void calcularDuracion() {
+        //recorrer lista de paradas y actualizar tiempoDeDemoraALaSiguienteParada de cada una
+
+        //sumar tiempoDeDemoraALaSiguienteParada + tiempoDeDemoraEnParada de cada una (y hacer el total)
+
         this.tiempoDemoraEnMinutos = this.calculadorDeTiempoDeDemora.calcularTiempoDeDemora(distancia);
     }
 
