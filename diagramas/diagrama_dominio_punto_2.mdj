@@ -5275,7 +5275,7 @@
 											"top": 573,
 											"width": 423.16015625,
 											"height": 13,
-											"text": "-tiempoDeDemoraALaSiguienteParada: Double",
+											"text": "-tiempoDeDemoraTotalALaSiguienteParada: Double",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7860,7 +7860,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGPNF75XxyUhLY="
 							},
-							"name": "tiempoDeDemoraALaSiguienteParada",
+							"name": "tiempoDeDemoraTotalALaSiguienteParada",
 							"visibility": "private",
 							"type": "Double"
 						},
