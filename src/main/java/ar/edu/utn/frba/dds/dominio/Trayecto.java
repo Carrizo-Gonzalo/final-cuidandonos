@@ -2,6 +2,7 @@ package ar.edu.utn.frba.dds.dominio;
 
 import ar.edu.utn.frba.dds.dominio.adapters.CalculadorDeDistanciaAdapter;
 import ar.edu.utn.frba.dds.dominio.adapters.CalculadorDeTiempoDeDemoraAdapter;
+import ar.edu.utn.frba.dds.dominio.direccion.Direccion;
 import ar.edu.utn.frba.dds.dominio.reacciones.Reaccion;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,7 +30,7 @@ public class Trayecto {
     private CalculadorDeDistanciaAdapter calculadorDeDistancia;
     private CalculadorDeTiempoDeDemoraAdapter calculadorDeTiempoDeDemora;
 
-    public Trayecto() {
+    public Trayecto(String deMedranoAlObelisco) {
         this.cuidadores = new ArrayList<>();
         this.reacciones = new ArrayList<>();
     }

@@ -13,4 +13,12 @@ public class Persona {
     private String direccion;
     private LocalDate fechaNacimiento;
     private Boolean sexo;
+
+    public Persona(String nombre, String apellido, String direccion, LocalDate fechaNacimiento, Boolean sexo) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
+        this.fechaNacimiento = fechaNacimiento;
+        this.sexo = sexo;
+    }
 }
